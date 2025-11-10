@@ -1,0 +1,19 @@
+.box{
+      border: 2px solid black;     /* Border around the box */
+      margin: 50px;                /* Space outside the box */
+      padding: 20px;               /* Inner spacing */
+      text-align: center;          /* Center the text inside */
+      font-family: Arial, sans-serif;
+}
+.inner-box{
+  
+      background-color: yellow;    /* Content area */
+      padding: 40px;               /* Padding inside the box */
+      border: 40px solid blue;     /* Blue border to represent padding effect */
+      display: inline-block;       /* Keeps it centered and sized by content */
+    
+}
+h1 {
+      text-align: left;
+      margin-left: 20px;
+    }
