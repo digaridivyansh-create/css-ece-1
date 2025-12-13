@@ -1,0 +1,65 @@
+/* grid.css — accurate row-based and column-based grids
+   Use the container classes to switch:
+     <div class="container grid-rows">  -> row-major layout
+     <div class="container grid-columns"> -> column-major layout
+*/
+
+/* Reset / base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; font-family: Arial, Helvetica, sans-serif; background:#f3f6fb; display:flex; justify-content:center; align-items:center; padding:20px; }
+
+/* Common container look & base grid settings */
+.container{
+  width: 1000px;
+  height: 500px;
+  border: 2px solid #000;
+  background: aqua;
+  padding: 12px;
+  border-radius: 8px;
+
+  display: grid;
+  gap: 12px;                 /* space between rows & columns */
+  justify-items: center;     /* default horizontal placement inside each cell */
+  align-items: center;       /* default vertical placement inside each cell */
+
+  /* implicit track sizing if items overflow */
+  grid-auto-rows: minmax(70px, auto);
+  grid-auto-columns: minmax(80px, 1fr);
+}
+
+/* ---------------------------
+   ROWS-BASED GRID (default visual you probably expect)
+   - grid-auto-flow: row (fill rows left->right)
+   - explicit grid: 4 columns x 3 rows (exact)
+   ---------------------------*/
+.container.grid-rows{
+  /* explicit, accurate grid: 4 columns of 100px and 3 rows of 100px */
+  grid-template-columns: [col-start] 100px 100px 100px 100px [col-end];
+  grid-template-rows: [row-start] 100px 100px 100px [row-end];
+
+  /* ensure auto-placement follows row-major order (left→right then next row) */
+  grid-auto-flow: row;
+}
+
+/* Place each item precisely (row-major intended placement)
+   item1 -> cell (1,1)
+   item2 -> cell (2,1)
+   item3 -> cell (1,2)
+   item4 -> cell (2,2)
+   (You can adjust the grid-column/grid-row numbers below to move them)
+*/
+.item{
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px;
+  font-weight:700;
+}
+
+/* Default items: keep same size as tracks (100x100) */
+.item1{ background: linear-gradient(90deg,#ef4444,#f97
